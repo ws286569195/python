@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>chaxun</title>
+</head>
+<body>
+    <form action="{{ url_for('chaxun') }}" method="post">
+        <table>
+            <tbody>
+                <tr>
+                    <td>企业名称: </td>
+                    <td><input type="text" placeholder="请输入企业名称" name = 'qymc'></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="查询"></td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+    {% if qyxqs == "" %}
+    {% else %}
+    <table border="1">
+        <thead>
+        <th>企业名称</th>
+        <th>企业税号</th>
+        <th>企业地址</th>
+        <th>企业电话</th>
+        <th>企业QQ</th>
+        <th>创建时间</th>
+        <th>地区编码</th>
+        <th>主分机号</th>
+        <th>创建人</th>
+        </thead>
+        <tbody>
+          <meta charset="UTF-8">
+          {% for qyxqs in qyxq %}
+            <tr>
+                <td>{{ qyxqs.qymc}}</td>
+                <td>{{ qyxqs.qysh}}</td>
+                <td>{{ qyxqs.qydz}}</td>
+                <td>{{ qyxqs.phone}}</td>
+                <td>{{ qyxqs.qq}}</td>
+                <td>{{ qyxqs.cjsj}}</td>
+                <td>{{ qyxqs.dqbm}}</td>
+                <td>{{ qyxqs.zfjh}}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+</body>
+</html>
